@@ -34,8 +34,6 @@ namespace Xamarin.Forms.Platform.iOS
 			Delegator = new UICollectionViewDelegator(ItemsViewLayout);
 
 			CollectionView.Delegate = Delegator;
-
-			
 		}
 
 		public override UICollectionViewCell GetCell(UICollectionView collectionView, NSIndexPath indexPath)
@@ -104,10 +102,7 @@ namespace Xamarin.Forms.Platform.iOS
 
 		protected virtual IItemsViewSource CreateItemsViewSource()
 		{
-			var x = ItemsView.ItemsSource;
-
-
-			return ItemsSourceFactory.Create(x, CollectionView);
+			return ItemsSourceFactory.Create(ItemsView.ItemsSource, CollectionView);
 		}
 
 		public virtual void UpdateItemsSource()
