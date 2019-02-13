@@ -33,7 +33,7 @@ namespace Xamarin.Forms.Controls
 		{
 			_testCloudService = DependencyService.Get<ITestCloudService>();
 
-			SetMainPage(CreateDefaultMainPage());
+			SetMainPage(new Issue4387());
 
 			//TestMainPageSwitches();
 		}
@@ -108,7 +108,7 @@ namespace Xamarin.Forms.Controls
 		{
 			var layout = new StackLayout { BackgroundColor = Color.Red };
 			layout.Children.Add(new Label { Text = "This is master Page" });
-			var master = new ContentPage { Title = "Master", Content = layout, BackgroundColor = Color.SkyBlue, Icon ="menuIcon" };
+			var master = new ContentPage { Title = "Master", Content = layout, BackgroundColor = Color.SkyBlue, Icon = "menuIcon" };
 			master.On<iOS>().SetUseSafeArea(true);
 			var mdp = new MasterDetailPage
 			{
@@ -124,10 +124,10 @@ namespace Xamarin.Forms.Controls
 			return mdp;
 
 			//Device.SetFlags(new[] { "Shell_Experimental" });
-            //return new XamStore.StoreShell();
-        }
+			//return new XamStore.StoreShell();
+		}
 
-        protected override void OnAppLinkRequestReceived(Uri uri)
+		protected override void OnAppLinkRequestReceived(Uri uri)
 		{
 			var appDomain = "http://" + AppName.ToLowerInvariant() + "/";
 

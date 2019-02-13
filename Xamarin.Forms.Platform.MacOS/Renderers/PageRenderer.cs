@@ -69,6 +69,7 @@ namespace Xamarin.Forms.Platform.MacOS
 
 			_appeared = true;
 			UpdateTabOrder();
+			Console.WriteLine("PageRenderer.ViewDidAppear for" + this.Page.GetType().Name);
 			Page.SendAppearing();
 		}
 
@@ -201,7 +202,7 @@ namespace Xamarin.Forms.Platform.MacOS
 		void UpdateTabOrder()
 		{
 			var tabOrderElements = ((Page)Element).OnThisPlatform().GetTabOrder();
-			if(tabOrderElements != null && tabOrderElements.Length > 0)
+			if (tabOrderElements != null && tabOrderElements.Length > 0)
 			{
 				var count = tabOrderElements.Length;
 

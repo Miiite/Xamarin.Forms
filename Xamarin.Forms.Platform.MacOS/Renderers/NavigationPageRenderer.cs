@@ -123,6 +123,7 @@ namespace Xamarin.Forms.Platform.MacOS
 				return;
 
 			_appeared = true;
+			Console.WriteLine("NavigationPageRenderer.ViewDidAppear for " + this.NavigationPage?.GetType().Name);
 			NavigationPage?.SendAppearing();
 		}
 
@@ -361,7 +362,7 @@ namespace Xamarin.Forms.Platform.MacOS
 			var vco = Platform.GetRenderer(oldPage);
 			AddChildViewController(vc.ViewController);
 
-            var transitionStyle = NavigationPage.OnThisPlatform().GetNavigationTransitionPushStyle();
+			var transitionStyle = NavigationPage.OnThisPlatform().GetNavigationTransitionPushStyle();
 			return await this.HandleAsyncAnimation(vco.ViewController, vc.ViewController,
 				ToViewControllerTransitionOptions(transitionStyle), () => page?.SendAppearing(), true);
 		}

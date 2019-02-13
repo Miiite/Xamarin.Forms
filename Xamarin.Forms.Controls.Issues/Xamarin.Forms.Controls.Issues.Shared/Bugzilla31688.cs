@@ -43,7 +43,7 @@ namespace Xamarin.Forms.Controls.Issues
 				var page3 = await Page3.CreateAsync();
 				Navigation.InsertPageBefore(page3, aip);
 
-			
+
 				//// try to remove last page (with AcitivityIndicator) and here it bombs with the error: "java.lang.IndexOutOfBoundsException: index=3 count=2"
 				await Navigation.PopAsync();
 			}
@@ -62,6 +62,13 @@ namespace Xamarin.Forms.Controls.Issues
 				await Task.Delay(TimeSpan.FromMilliseconds(200)); // simulate loading of state from DB
 				return page;
 			}
+
+			protected override void OnAppearing()
+			{
+				base.OnAppearing();
+
+				Console.WriteLine("OnAppearing Page1");
+			}
 		}
 
 		public class Page2 : ContentPage
@@ -76,6 +83,13 @@ namespace Xamarin.Forms.Controls.Issues
 				var page = new Page2();
 				await Task.Delay(TimeSpan.FromMilliseconds(200)); // simulate loading of state from DB
 				return page;
+			}
+
+			protected override void OnAppearing()
+			{
+				base.OnAppearing();
+
+				Console.WriteLine("OnAppearing Page2");
 			}
 		}
 
